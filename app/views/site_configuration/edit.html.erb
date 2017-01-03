@@ -1,0 +1,58 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class ="header center orange-text">Site Configuration</h5>
+    <div class="row">
+      <div class = "col s6 offset-s3">
+        <form action='/site_configuration/<%=@site_configuration.id%>' method='POST' autocomplete="new-password">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <div class="row">
+              <div class="input-field">
+                  <label for="company_name">Company Name:</label>
+                  <input type="text" name="company_name" value="<%=@site_configuration.name%>"><br>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field">
+                  <label for="company_description">Company Description:</label>
+                  <input type="text" name="company_description" value="<%=@site_configuration.description%>"><br>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field">
+                  <label for="company_bio">Company Bio:</label>
+                  <input type="text" name="company_bio" value="<%=@site_configuration.bio%>"><br>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field">
+                  <label for="contact_email">Contact Email:</label>
+                  <input type="text" name="contact_email" value="<%=@site_configuration.contact_email%>"><br>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field">
+                  <label for="contact_phone">Contact Phone:</label>
+                  <input type="text" name="contact_phone" value="<%=@site_configuration.contact_phone%>"><br>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <button class="btn light-blue lighten-1" type="submit" name="action">Submit
+              </button>
+            </div>
+        </form>
+
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |msg| %>
+            <p> <%= msg %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

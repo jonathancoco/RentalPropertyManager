@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JC2 Properties</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!-- Dropdown Structure -->
+
+  <ul id="administration_dropdown" class="dropdown-content">
+    <li><%= link_to "Property Maintenance", properties_maintain_path %></li>
+    <li class="divider"></li>
+    <li><%= link_to "Site Configuration", site_configuration_index_path %> </li>
+    <li><%= link_to "Services Configuration", services_path %> </li>
+  </ul>
+
+
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <ul class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      <!-- Dropdown Trigger -->
+        <% if services.count > 0 %>
+          <li><%= link_to "Services", services_show_all_path %></li>
+        <% end %>
+
+        <li><%= link_to "About Us", aboutus_path %></li>
+      </ul>
+
+      <ul class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li>Welcome, <%= current_user.name %> </li>
+          <li><%= link_to "Logout", session_path(current_user), :method => :delete %></li>
+          <% if current_user %>
+          <!-- Dropdown Trigger -->
+            <li><a class="dropdown-button" href="#!" data-activates="administration_dropdown">Administration<i class="material-icons right">arrow_drop_down</i></a></li>
+          <% end %>
+        <% else %>
+          <!-- Dropdown Trigger -->
+          <li><%= link_to "Login", new_session_path %></li>
+        <% end %>
+      </ul>
+
+      <ul id="nav-mobile_admin" class="side-nav">
+        <li><a href="/site_configuration">Administration</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+<!--
+  <footer class="page-footer light-blue lighten-1">
+    <div class="container">
+      <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Company Bio</h5>
+            <p class="grey-text text-lighten-4"><%= site_configuration.bio %></p>
+          </div>
+
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">email: <%= site_configuration.contact_email %></a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">phone: <%= site_configuration.contact_phone %></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> -->
+
+</body>
+</html>

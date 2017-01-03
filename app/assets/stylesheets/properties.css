@@ -1,0 +1,28 @@
+// Place all the styles related to the Properties controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+p{
+  color:red 
+}
+#map {
+      height: 400px;
+      width: 100%;
+     }
+
+#floating-panel {
+ position: absolute;
+ top: 10px;
+ left: 25%;
+ z-index: 5;
+ background-color: #fff;
+ padding: 5px;
+ border: 1px solid #999;
+ text-align: center;
+ font-family: 'Roboto','sans-serif';
+ line-height: 30px;
+ padding-left: 10px;
+}

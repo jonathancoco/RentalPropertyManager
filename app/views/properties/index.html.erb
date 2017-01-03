@@ -1,0 +1,30 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class="header center orange-text"><%= site_configuration.name %> </h5>
+    <div class="row center">
+      <h5 class="header col s12 light"><%= site_configuration.description %></h5>
+    </div>
+
+    <div class="row center">
+      <table class ="highlight">
+        <thead>
+          <th>Image</th>
+          <th>Location</th>
+          <th>Availability</th>
+          <th>Rent</th>
+          <th>Action<th>
+        </thead>
+
+        <% @available_property.each do |property| %>
+        <tr>
+          <td><%= image_tag attachment_url(property, :image, :fill, 100, 100) %></td>  
+          <td><%= property.location %></td>
+          <td><%= property.available_date.strftime("%B %Y") %></td>
+          <td><%= number_to_currency(property.rent) %></td>
+          <td><%= link_to "Details", property_path(property) %> | <a href="mailto:<%=site_configuration.contact_email%>?Subject=Property Inquirty" target="_top">Inquire</a></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

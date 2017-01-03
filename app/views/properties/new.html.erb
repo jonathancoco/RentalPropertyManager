@@ -1,0 +1,53 @@
+
+<div class="col s4 center"><h4>New  Property Creation</h4></div>
+
+<div class="row">
+  <div class = "col s6 offset-s3">
+
+    <%= form_for @property, html: { multipart: true } do |f| %>
+
+    <% if flash[:errors] %>
+      <div id="error_explanation">
+        <p><%= pluralize(flash[:errors].count, "error") %> prohibited this property from being saved:</p>
+        <ul>
+        <% flash[:errors].each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </div>
+
+    <div class="field">
+      <%= f.label :rent %><br>
+      <%= f.number_field :rent %>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :available %>
+      <%= f.label :available %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :available_date %><br>
+      <%= f.date_field :available_date %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.attachment_field :image %>
+    </div>
+    <br>
+    <br>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  </div>
+</div>

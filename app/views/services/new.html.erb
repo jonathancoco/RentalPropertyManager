@@ -1,0 +1,27 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class="header center orange-text">New Service</h5>
+
+    <form action='/services' method='POST' autocomplete="new-password">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="title" value=""><br>
+            <label for="title" class="active" >Title:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="description" class="materialize-textarea"></textarea><br>
+            <label for="description" class="active" >Description:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">New Service
+          </button>
+        </div>
+    </form>
+  </div>
+</div>

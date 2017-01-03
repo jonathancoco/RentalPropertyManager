@@ -1,0 +1,64 @@
+
+<div class="col s4 center"><h4>Edit Property</h4></div>
+
+<div class="row">
+  <div class = "col s6 offset-s3">
+    <%= form_for @property, html: { multipart: true } do |f| %>
+    <% if @property.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@property.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+        <ul>
+        <% @property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </div>
+
+    <div class="field">
+      <%= f.label :rent %><br>
+      <%= f.text_field :rent %>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :available %>
+      <%= f.label :available %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :available_date %><br>
+      <%= f.date_field :available_date %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.attachment_field :image %>
+    </div>
+
+    <%= image_tag attachment_url(@property, :image, :fill, 300, 300)%>
+    
+    <div class="field">
+      <%= f.check_box :remove_image %>
+      <%= f.label :remove_image %>
+    </div>
+    <br>
+    <br>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+    <% if flash[:errors] %>
+        <% flash[:errors].each do |msg| %>
+          <p> <%= msg %></p>
+        <% end %>
+      <% end %>
+  </div>
+</div>

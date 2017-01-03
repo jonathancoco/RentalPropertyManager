@@ -1,0 +1,174 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+
+
+<div class="row">
+      <div class="col s1">1</div>
+      <div class="col s1">2</div>
+      <div class="col s1">3</div>
+      <div class="col s1">4</div>
+      <div class="col s1">5</div>
+      <div class="col s1">6</div>
+      <div class="col s1">7</div>
+      <div class="col s1">8</div>
+      <div class="col s1">9</div>
+      <div class="col s1">10</div>
+      <div class="col s1">11</div>
+      <div class="col s1">12</div>
+</div>
+
+<div class="row">
+  <div class="col s12 center">This div is 12-columns wide</div>
+  <div class="col s6 center">This div is 6-columns wide</div>
+  <div class="col s6 center">This div is 6-columns wide</div>
+</div>
+
+
+    <ul class="collapsible" data-collapsible="accordion">
+     <li>
+       <div class="collapsible-header"><i class="material-icons">filter_drama</i>Site Configuration</div>
+       <div class="collapsible-body">
+         <form action='/site_configuration/<%=@site_configuration.id%>' method='POST' autocomplete="new-password">
+             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+             <% if @site_configuration.id != nil %>
+               <input type='hidden' name='_method' value='PUT'>
+             <% end %>
+             <div class="row">
+               <div class="input-field">
+                 <input type="text" name="company_name" value="<%=@site_configuration.name%>"><br>
+                 <label for="company_name" class="active" >Company Name:</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field">
+                 <textarea name="company_description" class="materialize-textarea"><%=@site_configuration.description%></textarea><br>
+                 <label for="company_description" class="active" >Company Description:</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field">
+                 <textarea name="company_bio" class="materialize-textarea"><%=@site_configuration.bio%></textarea><br>
+                 <label for="company_bio" class="active" >Company Bio:</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field">
+                 <input type="text" name="contact_email" value="<%=@site_configuration.contact_email%>"><br>
+                 <label for="contact_email" class="active" >Contact Email:</label>
+               </div>
+             </div>
+
+             <div class="row">
+               <div class="input-field">
+                   <input type="text" name="contact_phone" value="<%=@site_configuration.contact_phone%>"><br>
+                   <label for="contact_phone" class="active" >Contact Phone:</label>
+               </div>
+             </div>
+
+
+             <div class="row">
+               <button class="btn light-blue lighten-1" type="submit" name="action">Submit
+               </button>
+             </div>
+         </form>
+       </div>
+     </li>
+     <li>
+       <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+     </li>
+     <li>
+       <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+     </li>
+   </ul>
+
+
+    <h5 class ="header center orange-text">Site Configuration</h5>
+
+    <form action='/site_configuration/<%=@site_configuration.id%>' method='POST' autocomplete="new-password">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        <% if @site_configuration.id != nil %>
+          <input type='hidden' name='_method' value='PUT'>
+        <% end %>
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="company_name" value="<%=@site_configuration.name%>"><br>
+            <label for="company_name" class="active" >Company Name:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="company_description" class="materialize-textarea"><%=@site_configuration.description%></textarea><br>
+            <label for="company_description" class="active" >Company Description:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="company_bio" class="materialize-textarea"><%=@site_configuration.bio%></textarea><br>
+            <label for="company_bio" class="active" >Company Bio:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="contact_email" value="<%=@site_configuration.contact_email%>"><br>
+            <label for="contact_email" class="active" >Contact Email:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+              <input type="text" name="contact_phone" value="<%=@site_configuration.contact_phone%>"><br>
+              <label for="contact_phone" class="active" >Contact Phone:</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">Submit
+          </button>
+        </div>
+    </form>
+
+    <h5 class="header center orange-text">Property Maintenance</h5>
+    <form action='/properties/new' method='GET'>
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">New  Property</button>
+        </div>
+    </form>
+
+    <div class="row center">
+      <table class ="highlight">
+        <thead>
+          <th>Image</th>
+          <th>Location</th>
+          <th>Availability</th>
+          <th>Rent</th>
+          <th>Action<th>
+        </thead>
+
+        <% @all_property.each do |property| %>
+        <tr>
+          <% if property.images.count > 0 %>
+            <td><img src="/assets/<%=property.images.first.file_location%>" height="100" width="120"></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td><%= property.location %></td>
+          <td><%= property.available_date.strftime("%B %Y") %></td>
+          <td><%= number_to_currency(property.rent) %></td>
+          <td><%= link_to "Edit", edit_property_path(property) %> | <%= link_to "Delete", property_path(property), :method => :delete %> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div> 

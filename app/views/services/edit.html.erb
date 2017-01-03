@@ -1,0 +1,28 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class="header center orange-text">Services</h5>
+
+    <form action='/services/<%=@service.id%>' method='POST' autocomplete="new-password">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <input type='hidden' name='_method' value='PUT'>
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="title" value="<%=@service.title%>"><br>
+            <label for="title" class="active" >Title:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="description" class="materialize-textarea"><%=@service.description%></textarea><br>
+            <label for="description" class="active" >Description:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">Submit
+          </button>
+        </div>
+    </form>
+  </div>
+</div>

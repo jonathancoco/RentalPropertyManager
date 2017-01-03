@@ -1,0 +1,71 @@
+<br>
+<br>
+<div class="divider"></div>
+<div class = "section">
+  <div class="row">
+    <h5 class="header center orange-text">Property</h5>
+    <div class = "col s12 l12">
+      <table class =" bordered striped">
+        <tr>
+          <td>Location:</td>
+          <td><%=@property.location%></td>
+        </tr>
+
+        <tr>
+          <td>Rent:</td>
+          <td><%=number_to_currency(@property.rent)%></td>
+        </tr>
+
+        <% if @property.available %>
+          <tr>
+            <td>Date Available:</td>
+            <td><%=@property.available_date.strftime("%B %Y") %></td>
+          </tr>
+        <% end %>
+
+        <% @property.property_attributes.each do |attribute| %>
+        <tr>
+          <td><%= attribute.key %></td>
+          <td><%= attribute.value %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section">
+  <div class="row">
+    <div class = "col s12 l6 center">
+      <h5 class="header center orange-text">Location</h5>
+      <div id="map"></div>
+    </div>
+
+    <div class = "col s12 l6 center">
+      <h5 class="header center orange-text">Photos</h5>
+      <%= image_tag attachment_url(@property, :image, :fill, 400, 400) %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+    console.log("we are in the javascript")
+    function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 20,
+    center: {lat: <%=@property.latitude%>, lng: <%=@property.longitude%>}
+    });
+
+    var marker = new google.maps.Marker({
+    map: map,
+    position: {lat: <%=@property.latitude%>, lng: <%=@property.longitude%>}
+    });
+
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSM8SAfdieagJmf6m1zQ4TbSb14JDjFA&callback=initMap">
+</script>

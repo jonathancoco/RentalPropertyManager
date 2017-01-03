@@ -1,0 +1,30 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class="header center orange-text">Services</h5>
+
+    <form action='/services/new' method='GET' autocomplete="new-password">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">New Service
+          </button>
+        </div>
+    </form>
+
+    <div class="row center">
+      <table class ="highlight">
+        <thead>
+          <th>Title</th>
+          <th>Description</th>
+        </thead>
+
+        <% @all_services.each do |service| %>
+        <tr>
+          <td><%= service.title %></td>
+          <td><%= service.description %></td>
+          <td><%= link_to "Edit", edit_service_path(service) %> | <%= link_to "Delete", service_path(service), :method => :delete %> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

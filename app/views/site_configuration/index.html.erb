@@ -1,0 +1,52 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class ="header center orange-text">Site Configuration</h5>
+    <form action='/site_configuration/<%=@site_configuration.id%>' method='POST' autocomplete="new-password">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        <% if @site_configuration.id != nil %>
+          <input type='hidden' name='_method' value='PUT'>
+        <% end %>
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="company_name" value="<%=@site_configuration.name%>"><br>
+            <label for="company_name" class="active" >Company Name:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="company_description" class="materialize-textarea"><%=@site_configuration.description%></textarea><br>
+            <label for="company_description" class="active" >Company Description:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <textarea name="company_bio" class="materialize-textarea"><%=@site_configuration.bio%></textarea><br>
+            <label for="company_bio" class="active" >Company Bio:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+            <input type="text" name="contact_email" value="<%=@site_configuration.contact_email%>"><br>
+            <label for="contact_email" class="active" >Contact Email:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field">
+              <input type="text" name="contact_phone" value="<%=@site_configuration.contact_phone%>"><br>
+              <label for="contact_phone" class="active" >Contact Phone:</label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">Submit
+          </button>
+        </div>
+    </form>
+  </div>
+</div>

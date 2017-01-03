@@ -1,0 +1,31 @@
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h5 class="header center orange-text">Property Maintenance</h5>
+    <form action='/properties/new' method='GET'>
+        <div class="row">
+          <button class="btn light-blue lighten-1" type="submit" name="action">New  Property</button>
+        </div>
+    </form>
+    <div class="row center">
+      <table class ="highlight">
+        <thead>
+          <th>Image</th>
+          <th>Location</th>
+          <th>Availability</th>
+          <th>Rent</th>
+          <th>Action<th>
+        </thead>
+
+        <% @all_property.each do |property| %>
+        <tr>
+          <td><%= image_tag attachment_url(property, :image, :fill, 100, 100) %></td>
+          <td><%= property.location %></td>
+          <td><%= property.available_date.strftime("%B %Y") %></td>
+          <td><%= number_to_currency(property.rent) %></td>
+          <td><%= link_to "Edit", edit_property_path(property) %> | <%= link_to "Characteristics", edit_property_attribute_path(property)%>| <%= link_to "Delete", property_path(property), :method => :delete %> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
